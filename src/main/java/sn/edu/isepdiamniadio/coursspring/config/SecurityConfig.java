@@ -25,8 +25,9 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/recherche/**").permitAll() // Les API de recherche sont publiques
-                        .anyRequest().hasRole("PROFESSEUR") // Les autres API nécessitent le rôle PROFESSEUR
+                        .requestMatchers("/api/recherche/**").permitAll()
+                        .requestMatchers("/api/roles/**").permitAll() // Permettre l'accès aux endpoints des rôles
+                        .anyRequest().hasRole("PROFESSEUR")
                 )
                 .formLogin(form -> form
                         .loginPage("/login").permitAll()
