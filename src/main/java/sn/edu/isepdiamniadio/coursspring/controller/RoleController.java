@@ -20,7 +20,7 @@ public class RoleController {
     @Autowired
     private RoleRepository roleRepository;
 
-    // Récupérer tous les rôles
+    // la recuperation de tout les roles
     @GetMapping
     public ResponseEntity<List<Role>> getAllRoles() {
         try {
@@ -34,7 +34,7 @@ public class RoleController {
         }
     }
 
-    // Récupérer un rôle par son ID
+    // La recuperation d'un role par son ID
     @GetMapping("/{id}")
     public ResponseEntity<Role> getRoleById(@PathVariable("id") Long id) {
         Optional<Role> roleData = roleRepository.findById(id);
@@ -45,7 +45,7 @@ public class RoleController {
         }
     }
 
-    // Créer un nouveau rôle
+    // Ici c'est pour la ceation dun nouveau role
     @PostMapping
     public ResponseEntity<Role> createRole(@RequestBody Role role) {
         try {
@@ -56,7 +56,7 @@ public class RoleController {
         }
     }
 
-    // Mettre à jour un rôle
+    // Ici c'est pout la mettre a jour
     @PutMapping("/{id}")
     public ResponseEntity<Role> updateRole(@PathVariable("id") Long id, @RequestBody Role role) {
         Optional<Role> roleData = roleRepository.findById(id);
@@ -70,7 +70,7 @@ public class RoleController {
         }
     }
 
-    // Supprimer un rôle
+    // Supprimer definitivement un role a travers son id
     @DeleteMapping("/{id}")
     public ResponseEntity<Map<String, String>> deleteRole(@PathVariable("id") Long id) {
         try {
